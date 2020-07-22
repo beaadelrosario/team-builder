@@ -10,10 +10,6 @@ const StyledApp = styled.div`
  padding: 5% 5%;
  background:#f6f4f4;
  font-family:Georgia, 'Times New Roman', Times, serif;
- /* background-image:url("https://images.unsplash.com/photo-1519248010288-0b8d3e8e1500?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2256&q=80");
- background-size: cover;
- background-position: center;
-background-repeat: no-repeat; */
 
 h1 {
   text-transform:uppercase;
@@ -21,6 +17,20 @@ h1 {
 
 h2 {
   text-decoration:underline;
+}
+
+#app-header {
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  margin-left:10%;
+  margin-right:10%;
+  padding: 3% 0;
+}
+
+img {
+  padding-bottom:1.5%;
+  width:60px;
 }
 
 `
@@ -87,8 +97,10 @@ function App() {
 
   return (
     <StyledApp className="App">
-      <header><h1>Lambda Team Roster App</h1></header>
-      <img src={lambdaLogo}/>
+      <div id='app-header'>
+        <header><h1>Lambda Team Roster App</h1></header>
+        <img src={lambdaLogo}/>
+      </div>
       <TeammateForm 
         values={formValues}
         update={updateForm}
