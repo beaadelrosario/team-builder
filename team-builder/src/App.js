@@ -1,9 +1,29 @@
 import React, {useState,useEffect} from 'react';
-// import logo from './logo.svg';
 import { v4 as uuid } from 'uuid'
 import './App.css';
-import TeammateForm from './TeammateForm'
-import Member from './Member'
+import TeammateForm from './components/TeammateForm'
+import Member from './components/Member'
+import styled from 'styled-components'
+import lambdaLogo from './components/lambda logo sheilf.png'
+
+const StyledApp = styled.div`
+ padding: 5% 5%;
+ background:#f6f4f4;
+ font-family:Georgia, 'Times New Roman', Times, serif;
+ /* background-image:url("https://images.unsplash.com/photo-1519248010288-0b8d3e8e1500?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2256&q=80");
+ background-size: cover;
+ background-position: center;
+background-repeat: no-repeat; */
+
+h1 {
+  text-transform:uppercase;
+}
+
+h2 {
+  text-decoration:underline;
+}
+
+`
 
 const initialTeamList =[
   {
@@ -42,9 +62,9 @@ function App() {
 
   const submitForm = () => {
     const newTeammate = {
-      name:formValues.name.trim(),
-      email:formValues.email.trim(),
-      location:formValues.location.trim(),
+      name: formValues.name.trim(),
+      email: formValues.email.trim(),
+      location: formValues.location.trim(),
       role: formValues.role,
     }
 
@@ -66,13 +86,15 @@ function App() {
   },[])
 
   return (
-    <div className="App">
-      <header><h1>Team List</h1></header>
+    <StyledApp className="App">
+      <header><h1>Lambda Team Roster App</h1></header>
+      <img src={lambdaLogo}/>
       <TeammateForm 
         values={formValues}
         update={updateForm}
         submit={submitForm} 
       />
+      <h2>Meet The Team</h2>
       {
         team.map(member => {
           return (
@@ -80,7 +102,7 @@ function App() {
           )
         })
       }
-    </div>
+    </StyledApp>
   );
 }
 
